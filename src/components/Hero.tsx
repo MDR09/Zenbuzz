@@ -44,7 +44,7 @@ const Hero: React.FC = () => {
       {/* Background Video */}
       <video
         ref={videoRef}
-        src="/assets/background.mp4"
+        src="/background.mp4"
         className="absolute inset-0 w-full h-full object-cover"
         autoPlay
         muted

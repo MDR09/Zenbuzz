@@ -32,7 +32,7 @@ const Header: React.FC = () => {
           {/* Logo */}
           <div className="flex items-center space-x-6">
             <img
-              src="/assets/logo.jpg"
+              src="/logo.jpg"
               alt="ZenBuzz Media Logo"
               className="w-24 h-12 object-contain"
             />
