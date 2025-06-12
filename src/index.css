@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+.font-display {
+  font-family: 'Playfair Display', serif;
+}
+
+.parallax-container {
+  perspective: 1000px;
+  overflow-x: hidden;
+}
+
+.parallax-element {
+  transform-style: preserve-3d;
+}
+
+.image-mask {
+  clip-path: circle(50% at 50% 50%);
+  transition: clip-path 0.8s ease-in-out;
+}
+
+.image-mask:hover {
+  clip-path: circle(100% at 50% 50%);
+}
+
+.fizzy-button {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.fizzy-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.fizzy-button:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.rotating-image {
+  animation: rotate 20s linear infinite;
+}
+
+.rotating-image:hover {
+  animation-play-state: paused;
+}
+
+.card-shadow {
+  box-shadow: 0 4px 6px -1px rgba(186, 130, 77, 0.1), 0 2px 4px -1px rgba(186, 130, 77, 0.06);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.card-shadow:hover {
+  box-shadow: 0 20px 25px -5px rgba(186, 130, 77, 0.1), 0 10px 10px -5px rgba(186, 130, 77, 0.04);
+  transform: translateY(-8px);
+}
+
+.fixed-bg-box {
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f4ede0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ba824d;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ac6f41;
+}
