@@ -48,15 +48,15 @@ const Services: React.FC = () => {
   ];
 
   return (
-    <section id="services" className="py-20 bg-zen-beige-50">
+    <section id="services" className="py-20 bg-zen-light">
       <div className="container mx-auto px-6">
         <div ref={ref} className={`transition-all duration-1000 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           {/* Header */}
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-display font-bold text-zen-brown-800 mb-6">
+            <h2 className="text-4xl md:text-5xl font-display font-bold text-zen-brown mb-6">
               Our Services
             </h2>
-            <p className="text-xl text-zen-brown-600 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-zen-brown/70 max-w-3xl mx-auto leading-relaxed">
               Comprehensive digital solutions tailored to elevate your brand and connect with your audience
             </p>
           </div>
@@ -73,24 +73,24 @@ const Services: React.FC = () => {
                   <service.icon className="w-8 h-8 text-white group-hover:text-white transition-colors duration-300" />
                 </div>
                 
-                <h3 className="text-2xl font-display font-semibold text-zen-brown-800 group-hover:text-white mb-4 transition-colors duration-300">
+                <h3 className="text-2xl font-display font-semibold text-zen-brown group-hover:text-white mb-4 transition-colors duration-300">
                   {service.title}
                 </h3>
                 
-                <p className="text-zen-brown-600 group-hover:text-zen-beige-100 mb-6 leading-relaxed transition-colors duration-300">
+                <p className="text-zen-brown/70 group-hover:text-zen-cream mb-6 leading-relaxed transition-colors duration-300">
                   {service.description}
                 </p>
                 
                 <ul className="space-y-2">
                   {service.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-center text-zen-brown-600 group-hover:text-zen-beige-100 transition-colors duration-300">
-                      <div className="w-2 h-2 bg-zen-beige-500 group-hover:bg-white rounded-full mr-3"></div>
+                    <li key={featureIndex} className="flex items-center text-zen-brown/70 group-hover:text-zen-cream transition-colors duration-300">
+                      <div className="w-2 h-2 bg-zen-rose group-hover:bg-white rounded-full mr-3"></div>
                       {feature}
                     </li>
                   ))}
                 </ul>
                 
-                <button className="fizzy-button mt-6 text-zen-brown-700 group-hover:text-white font-semibold transition-colors duration-300 hover:underline">
+                <button className="fizzy-button mt-6 text-zen-brown group-hover:text-white font-semibold transition-colors duration-300 hover:underline">
                   Learn More →
                 </button>
               </div>

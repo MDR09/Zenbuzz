@@ -65,12 +65,12 @@ body {
 }
 
 .card-shadow {
-  box-shadow: 0 4px 6px -1px rgba(186, 130, 77, 0.1), 0 2px 4px -1px rgba(186, 130, 77, 0.06);
+  box-shadow: 0 4px 6px -1px rgba(118, 63, 33, 0.1), 0 2px 4px -1px rgba(118, 63, 33, 0.06);
   transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .card-shadow:hover {
-  box-shadow: 0 20px 25px -5px rgba(186, 130, 77, 0.1), 0 10px 10px -5px rgba(186, 130, 77, 0.04);
+  box-shadow: 0 20px 25px -5px rgba(118, 63, 33, 0.1), 0 10px 10px -5px rgba(118, 63, 33, 0.04);
   transform: translateY(-8px);
 }
 
@@ -91,14 +91,24 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #f4ede0;
+  background: #f3eadf;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #ba824d;
+  background: #763f21;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #ac6f41;
+  background: #5a2f19;
+}
+
+/* Animation Classes */
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }

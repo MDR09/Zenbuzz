@@ -21,10 +21,10 @@ const About: React.FC = () => {
         <div ref={ref} className={`transition-all duration-1000 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           {/* Header */}
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-display font-bold text-zen-brown-800 mb-6">
+            <h2 className="text-4xl md:text-5xl font-display font-bold text-zen-brown mb-6">
               About ZenBuzz Media
             </h2>
-            <p className="text-xl text-zen-brown-600 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-zen-brown/70 max-w-3xl mx-auto leading-relaxed">
               We're a creative digital agency specializing in podcast production, social media content, 
               and brand storytelling that resonates with your audience.
             </p>
@@ -34,15 +34,15 @@ const About: React.FC = () => {
           <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
             {/* Text Content */}
             <div className="space-y-6">
-              <h3 className="text-3xl font-display font-semibold text-zen-brown-800">
+              <h3 className="text-3xl font-display font-semibold text-zen-brown">
                 Crafting Stories That Connect
               </h3>
-              <p className="text-zen-brown-600 leading-relaxed">
+              <p className="text-zen-brown/70 leading-relaxed">
                 At ZenBuzz Media, we believe in the power of authentic storytelling. Our team of creative 
                 professionals combines technical expertise with artistic vision to deliver content that 
                 not only looks great but also drives meaningful engagement.
               </p>
-              <p className="text-zen-brown-600 leading-relaxed">
+              <p className="text-zen-brown/70 leading-relaxed">
                 From podcast production to Instagram content creation, we help brands find their unique 
                 voice in the digital landscape. Our approach is collaborative, data-driven, and always 
                 focused on delivering measurable results.
@@ -50,7 +50,7 @@ const About: React.FC = () => {
               
               <div className="flex flex-wrap gap-4 pt-4">
                 {['Podcast Production', 'Social Media', 'Content Strategy', 'Brand Development'].map((skill) => (
-                  <span key={skill} className="px-4 py-2 bg-zen-beige-100 text-zen-brown-700 rounded-full text-sm font-medium">
+                  <span key={skill} className="px-4 py-2 bg-zen-light text-zen-brown rounded-full text-sm font-medium">
                     {skill}
                   </span>
                 ))}
@@ -66,7 +66,7 @@ const About: React.FC = () => {
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
               </div>
-              <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-zen-beige-400 rounded-full rotating-image flex items-center justify-center">
+              <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-zen-rose rounded-full rotating-image flex items-center justify-center">
                 <Zap className="w-8 h-8 text-white" />
               </div>
             </div>
@@ -83,8 +83,8 @@ const About: React.FC = () => {
                 <div className="w-16 h-16 bg-zen-gradient rounded-full flex items-center justify-center mx-auto mb-4 group-hover:rotate-12 transition-transform duration-300">
                   <stat.icon className="w-8 h-8 text-white" />
                 </div>
-                <div className="text-3xl font-bold text-zen-brown-800 mb-2">{stat.value}</div>
-                <div className="text-zen-brown-600">{stat.label}</div>
+                <div className="text-3xl font-bold text-zen-brown mb-2">{stat.value}</div>
+                <div className="text-zen-brown/70">{stat.label}</div>
               </div>
             ))}
           </div>

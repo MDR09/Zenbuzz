@@ -79,10 +79,10 @@ const InstagramBlogs: React.FC = () => {
         <div ref={ref} className={`transition-all duration-1000 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           {/* Header */}
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-display font-bold text-zen-brown-800 mb-6">
+            <h2 className="text-4xl md:text-5xl font-display font-bold text-zen-brown mb-6">
               Instagram Blogs
             </h2>
-            <p className="text-xl text-zen-brown-600 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-zen-brown/70 max-w-3xl mx-auto leading-relaxed">
               Stay updated with our latest insights, tips, and behind-the-scenes content
             </p>
           </div>
@@ -106,11 +106,11 @@ const InstagramBlogs: React.FC = () => {
                   />
                   
                   {/* Overlay */}
-                  <div className="absolute inset-0 bg-zen-brown-900/20 group-hover:bg-zen-brown-900/40 transition-colors duration-300" />
+                  <div className="absolute inset-0 bg-zen-brown/20 group-hover:bg-zen-brown/40 transition-colors duration-300" />
                   
                   {/* Category Badge */}
                   <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1 bg-zen-beige-500 text-white text-sm font-medium rounded-full">
+                    <span className="px-3 py-1 bg-zen-rose text-white text-sm font-medium rounded-full">
                       {post.category}
                     </span>
                   </div>
@@ -119,10 +119,10 @@ const InstagramBlogs: React.FC = () => {
                   {hoveredPost === post.id && (
                     <div className="absolute top-4 right-4 flex space-x-2 animate-fade-in">
                       <button className="p-2 bg-white/90 rounded-full hover:bg-white transition-colors duration-200">
-                        <Bookmark className="w-4 h-4 text-zen-brown-700" />
+                        <Bookmark className="w-4 h-4 text-zen-brown" />
                       </button>
                       <button className="p-2 bg-white/90 rounded-full hover:bg-white transition-colors duration-200">
-                        <ExternalLink className="w-4 h-4 text-zen-brown-700" />
+                        <ExternalLink className="w-4 h-4 text-zen-brown" />
                       </button>
                     </div>
                   )}
@@ -130,16 +130,16 @@ const InstagramBlogs: React.FC = () => {
 
                 {/* Content */}
                 <div className="p-6">
-                  <h3 className="text-xl font-display font-semibold text-zen-brown-800 mb-3 group-hover:text-zen-brown-600 transition-colors duration-300">
+                  <h3 className="text-xl font-display font-semibold text-zen-brown mb-3 group-hover:text-zen-brown/80 transition-colors duration-300">
                     {post.title}
                   </h3>
                   
-                  <p className="text-zen-brown-600 mb-4 leading-relaxed">
+                  <p className="text-zen-brown/70 mb-4 leading-relaxed">
                     {post.excerpt}
                   </p>
 
                   {/* Engagement Metrics */}
-                  <div className="flex items-center justify-between text-sm text-zen-brown-500">
+                  <div className="flex items-center justify-between text-sm text-zen-brown/60">
                     <div className="flex items-center space-x-4">
                       <div className="flex items-center space-x-1">
                         <Heart className="w-4 h-4" />

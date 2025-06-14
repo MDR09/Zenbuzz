@@ -84,7 +84,7 @@ const PodcastVideos: React.FC = () => {
   };
 
   return (
-    <section id="podcasts" className="py-20 bg-zen-beige-50 relative overflow-hidden">
+    <section id="podcasts" className="py-20 bg-zen-cream relative overflow-hidden">
       {/* Fixed Background Effect */}
       <div className="fixed-bg-box absolute inset-0 opacity-5" 
            style={{ backgroundImage: `url('https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1600')` }}>
@@ -94,10 +94,10 @@ const PodcastVideos: React.FC = () => {
         <div ref={ref} className={`transition-all duration-1000 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           {/* Header */}
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-display font-bold text-zen-brown-800 mb-6">
+            <h2 className="text-4xl md:text-5xl font-display font-bold text-zen-brown mb-6">
               Featured Podcasts
             </h2>
-            <p className="text-xl text-zen-brown-600 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-zen-brown/70 max-w-3xl mx-auto leading-relaxed">
               Dive deep into conversations that matter with industry leaders and creative minds
             </p>
           </div>
@@ -113,10 +113,10 @@ const PodcastVideos: React.FC = () => {
                     alt={podcasts[0].title}
                     className="w-full h-64 lg:h-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-zen-brown-900/40 group-hover:bg-zen-brown-900/60 transition-colors duration-300 flex items-center justify-center">
+                  <div className="absolute inset-0 bg-zen-brown/40 group-hover:bg-zen-brown/60 transition-colors duration-300 flex items-center justify-center">
                     <button
                       onClick={() => handlePlayVideo(podcasts[0].id)}
-                      className="fizzy-button w-20 h-20 bg-zen-beige-500 hover:bg-zen-beige-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-all duration-300"
+                      className="fizzy-button w-20 h-20 bg-zen-rose hover:bg-zen-brown rounded-full flex items-center justify-center group-hover:scale-110 transition-all duration-300"
                     >
                       <Play className="w-8 h-8 text-white ml-1" />
                     </button>
@@ -131,15 +131,15 @@ const PodcastVideos: React.FC = () => {
                     </span>
                   </div>
                   
-                  <h3 className="text-3xl font-display font-bold text-zen-brown-800 mb-4">
+                  <h3 className="text-3xl font-display font-bold text-zen-brown mb-4">
                     {podcasts[0].title}
                   </h3>
                   
-                  <p className="text-zen-brown-600 mb-6 leading-relaxed">
+                  <p className="text-zen-brown/70 mb-6 leading-relaxed">
                     {podcasts[0].description}
                   </p>
 
-                  <div className="flex items-center space-x-6 text-zen-brown-500 mb-6">
+                  <div className="flex items-center space-x-6 text-zen-brown/60 mb-6">
                     <div className="flex items-center space-x-2">
                       <Users className="w-4 h-4" />
                       <span>with {podcasts[0].guest}</span>
@@ -178,10 +178,10 @@ const PodcastVideos: React.FC = () => {
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                   
-                  <div className="absolute inset-0 bg-zen-brown-900/40 group-hover:bg-zen-brown-900/60 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                  <div className="absolute inset-0 bg-zen-brown/40 group-hover:bg-zen-brown/60 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
                     <button
                       onClick={() => handlePlayVideo(podcast.id)}
-                      className="fizzy-button w-12 h-12 bg-zen-beige-500 hover:bg-zen-beige-600 rounded-full flex items-center justify-center"
+                      className="fizzy-button w-12 h-12 bg-zen-rose hover:bg-zen-brown rounded-full flex items-center justify-center"
                     >
                       <Play className="w-5 h-5 text-white ml-0.5" />
                     </button>
@@ -204,15 +204,15 @@ const PodcastVideos: React.FC = () => {
 
                 {/* Content */}
                 <div className="p-6">
-                  <h3 className="text-lg font-display font-semibold text-zen-brown-800 mb-2 group-hover:text-zen-brown-600 transition-colors duration-300">
+                  <h3 className="text-lg font-display font-semibold text-zen-brown mb-2 group-hover:text-zen-brown/80 transition-colors duration-300">
                     {podcast.title}
                   </h3>
                   
-                  <p className="text-zen-brown-600 text-sm mb-4 leading-relaxed">
+                  <p className="text-zen-brown/70 text-sm mb-4 leading-relaxed">
                     {podcast.description}
                   </p>
 
-                  <div className="flex items-center justify-between text-xs text-zen-brown-500">
+                  <div className="flex items-center justify-between text-xs text-zen-brown/60">
                     <div className="flex items-center space-x-1">
                       <Calendar className="w-3 h-3" />
                       <span>{podcast.date}</span>
