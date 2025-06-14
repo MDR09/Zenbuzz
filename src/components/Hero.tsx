@@ -1,136 +1,112 @@
-import React, { useEffect, useState } from 'react';
-import { ChevronDown, Play, Headphones, Mic, Camera, Edit3 } from 'lucide-react';
+import React from 'react';
+import { ArrowRight, Play, TrendingUp, Users, Zap } from 'lucide-react';
 
-const Hero: React.FC = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({
-        x: (e.clientX / window.innerWidth) * 100,
-        y: (e.clientY / window.innerHeight) * 100,
-      });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-
-  const scrollToNext = () => {
-    document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
-  };
-
+const Hero = () => {
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-zen-light-gradient">
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-cream via-light-cream to-tan">
       {/* Animated Background Elements */}
       <div className="absolute inset-0">
-        {/* Floating Circles */}
-        <div 
-          className="absolute w-64 h-64 bg-zen-rose/20 rounded-full blur-3xl animate-float"
-          style={{
-            top: '10%',
-            left: '10%',
-            transform: `translate(${mousePosition.x * 0.02}px, ${mousePosition.y * 0.02}px)`,
-          }}
-        />
-        <div 
-          className="absolute w-96 h-96 bg-zen-beige/20 rounded-full blur-3xl animate-float"
-          style={{
-            top: '60%',
-            right: '10%',
-            animationDelay: '2s',
-            transform: `translate(${mousePosition.x * -0.03}px, ${mousePosition.y * -0.03}px)`,
-          }}
-        />
-        <div 
-          className="absolute w-48 h-48 bg-zen-brown/10 rounded-full blur-2xl animate-float"
-          style={{
-            bottom: '20%',
-            left: '20%',
-            animationDelay: '4s',
-            transform: `translate(${mousePosition.x * 0.025}px, ${mousePosition.y * 0.025}px)`,
-          }}
-        />
+        <div className="absolute top-20 left-10 w-32 h-32 bg-primary-400/10 rounded-full animate-float blur-xl"></div>
+        <div className="absolute top-40 right-20 w-24 h-24 bg-warm-tan/20 rounded-full animate-float blur-lg" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute bottom-32 left-20 w-40 h-40 bg-primary-300/10 rounded-full animate-float blur-2xl" style={{ animationDelay: '2s' }}></div>
       </div>
 
-      {/* Main Content */}
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center">
-          {/* Logo Animation */}
-          <div className="mb-8 animate-fade-in-up">
-            <div className="inline-flex items-center justify-center w-24 h-24 bg-zen-gradient rounded-full mb-6 animate-pulse-glow">
-              <Headphones className="w-12 h-12 text-white" />
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left Content */}
+          <div className="text-center lg:text-left animate-slide-in-left">
+            <div className="inline-flex items-center space-x-2 bg-white/60 backdrop-blur-sm rounded-full px-4 py-2 mb-6 shadow-lg">
+              <Zap className="h-4 w-4 text-primary-400" />
+              <span className="text-sm font-medium text-dark-brown">Creative Digital Solutions</span>
+            </div>
+            
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold text-dark-brown leading-tight mb-6">
+              Amplify Your 
+              <span className="text-primary-400 block">Digital Buzz</span>
+            </h1>
+            
+            <p className="text-lg md:text-xl text-dark-brown/80 mb-8 max-w-2xl">
+              We craft compelling digital experiences that captivate audiences and drive meaningful engagement. 
+              From strategy to execution, we're your creative digital marketing partner.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
+              <button className="group bg-primary-400 text-white px-8 py-4 rounded-full font-semibold hover:bg-primary-500 transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl flex items-center justify-center space-x-2">
+                <span>Start Your Journey</span>
+                <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
+              </button>
+              
+              <button className="group bg-white/80 backdrop-blur-sm text-dark-brown px-8 py-4 rounded-full font-semibold hover:bg-white transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2">
+                <Play className="h-5 w-5" />
+                <span>Watch Our Story</span>
+              </button>
+            </div>
+
+            {/* Stats */}
+            <div className="grid grid-cols-3 gap-6 text-center lg:text-left">
+              <div className="group">
+                <div className="flex items-center justify-center lg:justify-start mb-2">
+                  <TrendingUp className="h-6 w-6 text-primary-400 mr-2 group-hover:scale-110 transition-transform duration-300" />
+                  <span className="text-2xl font-bold text-dark-brown">250+</span>
+                </div>
+                <p className="text-sm text-dark-brown/70">Projects Completed</p>
+              </div>
+              
+              <div className="group">
+                <div className="flex items-center justify-center lg:justify-start mb-2">
+                  <Users className="h-6 w-6 text-primary-400 mr-2 group-hover:scale-110 transition-transform duration-300" />
+                  <span className="text-2xl font-bold text-dark-brown">150+</span>
+                </div>
+                <p className="text-sm text-dark-brown/70">Happy Clients</p>
+              </div>
+              
+              <div className="group">
+                <div className="flex items-center justify-center lg:justify-start mb-2">
+                  <Zap className="h-6 w-6 text-primary-400 mr-2 group-hover:scale-110 transition-transform duration-300" />
+                  <span className="text-2xl font-bold text-dark-brown">5+</span>
+                </div>
+                <p className="text-sm text-dark-brown/70">Years Experience</p>
+              </div>
             </div>
           </div>
 
-          {/* Main Heading */}
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold text-zen-brown mb-6 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-            ZenBuzz
-            <span className="block text-zen-rose">Media</span>
-          </h1>
-
-          {/* Subtitle */}
-          <p className="text-xl md:text-2xl text-zen-brown/80 mb-8 max-w-3xl mx-auto leading-relaxed animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
-            Creative Digital Solutions for Modern Brands
-          </p>
-
-          {/* Description */}
-          <p className="text-lg text-zen-brown/70 mb-12 max-w-2xl mx-auto leading-relaxed animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
-            We craft compelling podcasts, engaging social media content, and innovative digital experiences 
-            that connect brands with their audiences in meaningful ways.
-          </p>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16 animate-fade-in-up" style={{ animationDelay: '0.8s' }}>
-            <button className="fizzy-button bg-zen-gradient text-white px-8 py-4 rounded-full text-lg font-semibold hover:shadow-2xl transition-all duration-300 flex items-center space-x-2 group">
-              <Play className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" />
-              <span>Watch Our Work</span>
-            </button>
-            <button className="fizzy-button border-2 border-zen-brown text-zen-brown px-8 py-4 rounded-full text-lg font-semibold hover:bg-zen-brown hover:text-white transition-all duration-300">
-              Get Started
-            </button>
-          </div>
-
-          {/* Service Icons */}
-          <div className="flex justify-center space-x-8 mb-16 animate-fade-in-up" style={{ animationDelay: '1s' }}>
-            {[
-              { icon: Mic, label: 'Podcasts' },
-              { icon: Camera, label: 'Video' },
-              { icon: Edit3, label: 'Content' },
-            ].map((service, index) => (
-              <div
-                key={service.label}
-                className="flex flex-col items-center group cursor-pointer"
-                style={{ animationDelay: `${1.2 + index * 0.2}s` }}
-              >
-                <div className="w-16 h-16 bg-white/80 backdrop-blur-sm rounded-2xl flex items-center justify-center mb-3 group-hover:bg-zen-gradient group-hover:scale-110 transition-all duration-300 shadow-lg">
-                  <service.icon className="w-8 h-8 text-zen-brown group-hover:text-white transition-colors duration-300" />
+          {/* Right Content - Hero Image */}
+          <div className="relative animate-slide-in-right">
+            <div className="relative bg-white/40 backdrop-blur-sm rounded-3xl p-8 shadow-2xl">
+              <img 
+                src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                alt="Creative team collaboration" 
+                className="w-full h-96 object-cover rounded-2xl shadow-lg"
+              />
+              
+              {/* Floating Cards */}
+              <div className="absolute -top-4 -left-4 bg-white rounded-xl p-4 shadow-xl animate-float">
+                <div className="flex items-center space-x-2">
+                  <div className="w-3 h-3 bg-green-400 rounded-full"></div>
+                  <span className="text-sm font-medium text-dark-brown">Campaign Live</span>
                 </div>
-                <span className="text-zen-brown/70 text-sm font-medium">{service.label}</span>
               </div>
-            ))}
+              
+              <div className="absolute -bottom-4 -right-4 bg-primary-400 text-white rounded-xl p-4 shadow-xl animate-float" style={{ animationDelay: '1s' }}>
+                <div className="text-center">
+                  <div className="text-2xl font-bold">+47%</div>
+                  <div className="text-xs opacity-90">Growth Rate</div>
+                </div>
+              </div>
+            </div>
+            
+            {/* Background Decoration */}
+            <div className="absolute -z-10 top-8 left-8 w-full h-full bg-gradient-to-br from-primary-200/30 to-warm-tan/30 rounded-3xl blur-sm"></div>
           </div>
         </div>
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce-slow">
-        <button
-          onClick={scrollToNext}
-          className="flex flex-col items-center text-zen-brown/60 hover:text-zen-brown transition-colors duration-300 group"
-        >
-          <span className="text-sm font-medium mb-2 group-hover:translate-y-1 transition-transform duration-300">
-            Scroll Down
-          </span>
-          <ChevronDown className="w-6 h-6 group-hover:translate-y-1 transition-transform duration-300" />
-        </button>
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <div className="w-6 h-10 border-2 border-dark-brown/30 rounded-full flex justify-center">
+          <div className="w-1 h-3 bg-dark-brown/30 rounded-full mt-2"></div>
+        </div>
       </div>
-
-      {/* Decorative Elements */}
-      <div className="absolute top-20 left-10 w-2 h-2 bg-zen-rose rounded-full animate-pulse" />
-      <div className="absolute top-40 right-20 w-3 h-3 bg-zen-beige rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
-      <div className="absolute bottom-32 left-20 w-2 h-2 bg-zen-brown rounded-full animate-pulse" style={{ animationDelay: '2s' }} />
-      <div className="absolute bottom-20 right-32 w-4 h-4 bg-zen-rose/50 rounded-full animate-pulse" style={{ animationDelay: '3s' }} />
     </section>
   );
 };

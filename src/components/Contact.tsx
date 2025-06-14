@@ -1,198 +1,221 @@
 import React, { useState } from 'react';
-import { useInView } from 'react-intersection-observer';
-import { Mail, Phone, MapPin, Send, MessageSquare, User } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Clock, Globe } from 'lucide-react';
 
-const Contact: React.FC = () => {
-  const { ref, inView } = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-
+const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    subject: '',
-    message: '',
+    phone: '',
+    service: '',
+    message: ''
   });
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
+    // Handle form submission
     console.log('Form submitted:', formData);
   };
 
-  const contactInfo = [
-    {
-      icon: Mail,
-      title: 'Email Us',
-      details: 'hello@zenbuzzmedia.com',
-      action: 'mailto:hello@zenbuzzmedia.com',
-    },
-    {
-      icon: Phone,
-      title: 'Call Us',
-      details: '+1 (555) 123-4567',
-      action: 'tel:+15551234567',
-    },
-    {
-      icon: MapPin,
-      title: 'Visit Us',
-      details: 'Mumbai, Maharashtra, India',
-      action: '#',
-    },
-  ];
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
 
   return (
-    <section id="contact" className="py-20 bg-zen-brown text-white relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-0 left-0 w-64 h-64 border border-zen-rose rounded-full animate-pulse"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 border border-zen-rose rounded-full animate-pulse" style={{ animationDelay: '2s' }}></div>
-      </div>
-
-      <div className="container mx-auto px-6 relative z-10">
-        <div ref={ref} className={`transition-all duration-1000 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          {/* Header */}
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-6">
-              Let's Create Together
-            </h2>
-            <p className="text-xl text-zen-cream max-w-3xl mx-auto leading-relaxed">
-              Ready to bring your vision to life? Get in touch and let's start a conversation about your next project.
-            </p>
+    <section id="contact" className="py-20 bg-gradient-to-br from-primary-50 via-light-cream to-cream">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
+        <div className="text-center mb-16 animate-slide-up">
+          <div className="inline-flex items-center space-x-2 bg-white/60 backdrop-blur-sm rounded-full px-4 py-2 mb-6 shadow-lg">
+            <Mail className="h-4 w-4 text-primary-400" />
+            <span className="text-sm font-medium text-dark-brown">Get In Touch</span>
           </div>
+          
+          <h2 className="text-4xl md:text-5xl font-display font-bold text-dark-brown mb-6 leading-tight">
+            Let's Start Your 
+            <span className="text-primary-400 block">Digital Journey</span>
+          </h2>
+          
+          <p className="text-lg text-dark-brown/80 max-w-3xl mx-auto leading-relaxed">
+            Ready to transform your digital presence? We'd love to hear about your project 
+            and discuss how we can help you achieve your goals.
+          </p>
+        </div>
 
-          <div className="grid lg:grid-cols-2 gap-16">
-            {/* Contact Information */}
-            <div className="space-y-8">
-              <h3 className="text-3xl font-display font-bold text-zen-cream mb-8">
-                Get In Touch
+        <div className="grid lg:grid-cols-2 gap-16 items-start">
+          {/* Contact Information */}
+          <div className="animate-slide-in-left">
+            <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-white/20 mb-8">
+              <h3 className="text-2xl font-semibold text-dark-brown mb-8">
+                Let's Connect
               </h3>
 
-              {contactInfo.map((info, index) => (
-                <a
-                  key={index}
-                  href={info.action}
-                  className="block group"
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  <div className="flex items-center space-x-4 p-6 bg-zen-brown/50 rounded-2xl hover:bg-zen-brown/70 transition-all duration-300 group-hover:transform group-hover:scale-105">
-                    <div className="w-14 h-14 bg-zen-gradient rounded-xl flex items-center justify-center group-hover:rotate-12 transition-transform duration-300">
-                      <info.icon className="w-6 h-6 text-white" />
-                    </div>
-                    <div>
-                      <h4 className="text-xl font-semibold text-zen-cream mb-1">
-                        {info.title}
-                      </h4>
-                      <p className="text-zen-cream/80">
-                        {info.details}
-                      </p>
-                    </div>
+              <div className="space-y-6">
+                <div className="flex items-start space-x-4 group">
+                  <div className="flex-shrink-0 w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center group-hover:bg-primary-200 transition-colors duration-300">
+                    <Phone className="h-6 w-6 text-primary-400" />
                   </div>
-                </a>
-              ))}
+                  <div>
+                    <h4 className="font-semibold text-dark-brown mb-1">Phone</h4>
+                    <p className="text-dark-brown/70">+91 98765 43210</p>
+                    <p className="text-dark-brown/70">+91 87654 32109</p>
+                  </div>
+                </div>
 
-              {/* Additional Info */}
-              <div className="bg-zen-brown/30 rounded-2xl p-8 mt-12">
-                <h4 className="text-2xl font-display font-bold text-zen-cream mb-4">
-                  Why Choose ZenBuzz Media?
-                </h4>
-                <ul className="space-y-3 text-zen-cream/80">
-                  <li className="flex items-center space-x-3">
-                    <div className="w-2 h-2 bg-zen-rose rounded-full"></div>
-                    <span>Award-winning creative team</span>
-                  </li>
-                  <li className="flex items-center space-x-3">
-                    <div className="w-2 h-2 bg-zen-rose rounded-full"></div>
-                    <span>5+ years of industry experience</span>
-                  </li>
-                  <li className="flex items-center space-x-3">
-                    <div className="w-2 h-2 bg-zen-rose rounded-full"></div>
-                    <span>500+ successful projects delivered</span>
-                  </li>
-                  <li className="flex items-center space-x-3">
-                    <div className="w-2 h-2 bg-zen-rose rounded-full"></div>
-                    <span>24/7 dedicated support</span>
-                  </li>
-                </ul>
+                <div className="flex items-start space-x-4 group">
+                  <div className="flex-shrink-0 w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center group-hover:bg-primary-200 transition-colors duration-300">
+                    <Mail className="h-6 w-6 text-primary-400" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-dark-brown mb-1">Email</h4>
+                    <p className="text-dark-brown/70">hello@zenbuzzmedia.in</p>
+                    <p className="text-dark-brown/70">projects@zenbuzzmedia.in</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-4 group">
+                  <div className="flex-shrink-0 w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center group-hover:bg-primary-200 transition-colors duration-300">
+                    <MapPin className="h-6 w-6 text-primary-400" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-dark-brown mb-1">Office</h4>
+                    <p className="text-dark-brown/70">123 Digital Avenue,<br />Mumbai, Maharashtra 400001</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-4 group">
+                  <div className="flex-shrink-0 w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center group-hover:bg-primary-200 transition-colors duration-300">
+                    <Clock className="h-6 w-6 text-primary-400" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-dark-brown mb-1">Working Hours</h4>
+                    <p className="text-dark-brown/70">Mon - Fri: 9:00 AM - 6:00 PM</p>
+                    <p className="text-dark-brown/70">Sat: 10:00 AM - 4:00 PM</p>
+                  </div>
+                </div>
               </div>
             </div>
 
-            {/* Contact Form */}
-            <div className="bg-white rounded-3xl p-8 lg:p-10 text-zen-brown">
-              <div className="flex items-center space-x-3 mb-8">
-                <MessageSquare className="w-8 h-8 text-zen-brown" />
-                <h3 className="text-3xl font-display font-bold">
-                  Send Us a Message
-                </h3>
+            {/* Social Links */}
+            <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-white/20">
+              <h3 className="text-xl font-semibold text-dark-brown mb-6">Follow Our Journey</h3>
+              <div className="flex space-x-4">
+                {['LinkedIn', 'Twitter', 'Instagram', 'Facebook'].map((social) => (
+                  <button
+                    key={social}
+                    className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center hover:bg-primary-400 hover:text-white transition-all duration-300 transform hover:scale-110 shadow-lg"
+                  >
+                    <Globe className="h-5 w-5" />
+                  </button>
+                ))}
               </div>
+            </div>
+          </div>
+
+          {/* Contact Form */}
+          <div className="animate-slide-in-right">
+            <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-white/20">
+              <h3 className="text-2xl font-semibold text-dark-brown mb-8">
+                Start Your Project
+              </h3>
 
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
-                  <div className="relative">
-                    <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-zen-brown/50" />
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-medium text-dark-brown mb-2">
+                      Full Name *
+                    </label>
                     <input
                       type="text"
+                      id="name"
                       name="name"
                       value={formData.name}
-                      onChange={handleChange}
-                      placeholder="Your Name"
+                      onChange={handleInputChange}
                       required
-                      className="w-full pl-12 pr-4 py-4 bg-zen-light border border-zen-beige rounded-xl focus:outline-none focus:ring-2 focus:ring-zen-rose focus:border-zen-rose transition-all duration-300"
+                      className="w-full px-4 py-3 border border-primary-200 rounded-lg focus:ring-2 focus:ring-primary-400 focus:border-transparent transition-all duration-300 bg-white/70"
+                      placeholder="Your full name"
                     />
                   </div>
 
-                  <div className="relative">
-                    <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-zen-brown/50" />
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-dark-brown mb-2">
+                      Email Address *
+                    </label>
                     <input
                       type="email"
+                      id="email"
                       name="email"
                       value={formData.email}
-                      onChange={handleChange}
-                      placeholder="Your Email"
+                      onChange={handleInputChange}
                       required
-                      className="w-full pl-12 pr-4 py-4 bg-zen-light border border-zen-beige rounded-xl focus:outline-none focus:ring-2 focus:ring-zen-rose focus:border-zen-rose transition-all duration-300"
+                      className="w-full px-4 py-3 border border-primary-200 rounded-lg focus:ring-2 focus:ring-primary-400 focus:border-transparent transition-all duration-300 bg-white/70"
+                      placeholder="your@email.com"
                     />
                   </div>
                 </div>
 
-                <div>
-                  <input
-                    type="text"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    placeholder="Subject"
-                    required
-                    className="w-full px-4 py-4 bg-zen-light border border-zen-beige rounded-xl focus:outline-none focus:ring-2 focus:ring-zen-rose focus:border-zen-rose transition-all duration-300"
-                  />
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <label htmlFor="phone" className="block text-sm font-medium text-dark-brown mb-2">
+                      Phone Number
+                    </label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 border border-primary-200 rounded-lg focus:ring-2 focus:ring-primary-400 focus:border-transparent transition-all duration-300 bg-white/70"
+                      placeholder="+91 98765 43210"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="service" className="block text-sm font-medium text-dark-brown mb-2">
+                      Service Interested
+                    </label>
+                    <select
+                      id="service"
+                      name="service"
+                      value={formData.service}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 border border-primary-200 rounded-lg focus:ring-2 focus:ring-primary-400 focus:border-transparent transition-all duration-300 bg-white/70"
+                    >
+                      <option value="">Select a service</option>
+                      <option value="branding">Creative Design</option>
+                      <option value="marketing">Digital Marketing</option>
+                      <option value="development">Web Development</option>
+                      <option value="strategy">Analytics & Strategy</option>
+                      <option value="mobile">Mobile Marketing</option>
+                      <option value="performance">Performance Marketing</option>
+                    </select>
+                  </div>
                 </div>
 
                 <div>
+                  <label htmlFor="message" className="block text-sm font-medium text-dark-brown mb-2">
+                    Project Details *
+                  </label>
                   <textarea
+                    id="message"
                     name="message"
                     value={formData.message}
-                    onChange={handleChange}
-                    placeholder="Your Message"
+                    onChange={handleInputChange}
                     required
                     rows={6}
-                    className="w-full px-4 py-4 bg-zen-light border border-zen-beige rounded-xl focus:outline-none focus:ring-2 focus:ring-zen-rose focus:border-zen-rose transition-all duration-300 resize-none"
+                    className="w-full px-4 py-3 border border-primary-200 rounded-lg focus:ring-2 focus:ring-primary-400 focus:border-transparent transition-all duration-300 bg-white/70 resize-none"
+                    placeholder="Tell us about your project, goals, and how we can help you..."
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="fizzy-button w-full bg-zen-gradient text-white py-4 rounded-xl font-semibold text-lg hover:shadow-lg transition-all duration-300 flex items-center justify-center space-x-2"
+                  className="w-full bg-primary-400 text-white py-4 px-8 rounded-lg font-semibold hover:bg-primary-500 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2"
                 >
-                  <Send className="w-5 h-5" />
                   <span>Send Message</span>
+                  <Send className="h-5 w-5" />
                 </button>
               </form>
             </div>

@@ -1,119 +1,91 @@
 import React from 'react';
-import { useInView } from 'react-intersection-observer';
-import { Zap, Users, Award, Target, Heart, Lightbulb, Globe, Star } from 'lucide-react';
+import { Award, Heart, Target, Users, Zap, TrendingUp } from 'lucide-react';
 
-const About: React.FC = () => {
-  const { ref, inView } = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-
-  const stats = [
-    { icon: Users, value: '500+', label: 'Happy Clients' },
-    { icon: Award, value: '50+', label: 'Awards Won' },
-    { icon: Target, value: '1000+', label: 'Projects Completed' },
-    { icon: Zap, value: '99%', label: 'Client Satisfaction' },
-  ];
-
-  const values = [
-    {
-      icon: Heart,
-      title: 'Passion-Driven',
-      description: 'We pour our heart into every project, ensuring authentic and meaningful content creation.'
-    },
-    {
-      icon: Lightbulb,
-      title: 'Innovation First',
-      description: 'Constantly exploring new technologies and creative approaches to stay ahead of trends.'
-    },
-    {
-      icon: Globe,
-      title: 'Global Perspective',
-      description: 'Understanding diverse audiences and creating content that resonates across cultures.'
-    },
-    {
-      icon: Star,
-      title: 'Excellence Standard',
-      description: 'Maintaining the highest quality standards in every aspect of our creative process.'
-    }
-  ];
-
-  const team = [
-    {
-      name: 'Arjun Sharma',
-      role: 'Founder & Creative Director',
-      image: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=400',
-      bio: '10+ years in digital media with expertise in podcast production and brand storytelling.'
-    },
-    {
-      name: 'Priya Patel',
-      role: 'Head of Content Strategy',
-      image: 'https://images.pexels.com/photos/3184328/pexels-photo-3184328.jpeg?auto=compress&cs=tinysrgb&w=400',
-      bio: 'Social media strategist with a passion for creating viral content and community building.'
-    },
-    {
-      name: 'Rahul Kumar',
-      role: 'Audio Engineer',
-      image: 'https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=400',
-      bio: 'Award-winning audio engineer specializing in podcast production and sound design.'
-    },
-    {
-      name: 'Sneha Gupta',
-      role: 'Video Producer',
-      image: 'https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=400',
-      bio: 'Creative video producer with expertise in storytelling and visual content creation.'
-    }
-  ];
-
+const About = () => {
   return (
     <div className="pt-20">
       {/* Hero Section */}
-      <section className="py-20 bg-zen-light-gradient">
-        <div className="container mx-auto px-6 text-center">
-          <h1 className="text-5xl md:text-6xl font-display font-bold text-zen-brown mb-6">
-            About ZenBuzz Media
-          </h1>
-          <p className="text-xl text-zen-brown/70 max-w-3xl mx-auto leading-relaxed">
-            We're a passionate team of creators, storytellers, and digital innovators dedicated to 
-            helping brands find their unique voice in the digital landscape.
-          </p>
+      <section className="py-20 bg-gradient-to-br from-cream via-light-cream to-tan">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16 animate-slide-up">
+            <div className="inline-flex items-center space-x-2 bg-white/60 backdrop-blur-sm rounded-full px-4 py-2 mb-6 shadow-lg">
+              <Heart className="h-4 w-4 text-primary-400" />
+              <span className="text-sm font-medium text-dark-brown">About ZenBuzz Media</span>
+            </div>
+            
+            <h1 className="text-4xl md:text-6xl font-display font-bold text-dark-brown mb-6 leading-tight">
+              We Create Digital 
+              <span className="text-primary-400 block">Experiences That Matter</span>
+            </h1>
+            
+            <p className="text-xl text-dark-brown/80 max-w-4xl mx-auto leading-relaxed">
+              At ZenBuzz Media, we believe in the power of authentic storytelling and strategic innovation. 
+              Our passionate team combines creativity with data-driven insights to deliver campaigns that 
+              not only look stunning but also drive real business results.
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* Our Story */}
+      {/* Story Section */}
       <section className="py-20 bg-white">
-        <div className="container mx-auto px-6">
-          <div ref={ref} className={`transition-all duration-1000 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <div>
-                <h2 className="text-4xl font-display font-bold text-zen-brown mb-6">
-                  Our Story
-                </h2>
-                <p className="text-zen-brown/70 leading-relaxed mb-6">
-                  Founded in 2019, ZenBuzz Media emerged from a simple belief: every brand has a unique story 
-                  worth telling. What started as a small podcast production studio has evolved into a 
-                  comprehensive digital media agency serving clients across India and beyond.
-                </p>
-                <p className="text-zen-brown/70 leading-relaxed mb-6">
-                  Our journey began when our founder, Arjun Sharma, recognized the growing need for authentic, 
-                  high-quality digital content in an increasingly crowded online space. With a background in 
-                  audio engineering and a passion for storytelling, he set out to create a company that would 
-                  bridge the gap between technical excellence and creative vision.
-                </p>
-                <p className="text-zen-brown/70 leading-relaxed">
-                  Today, we're proud to be Mumbai's leading creative digital agency, having produced over 1000 
-                  podcast episodes, managed social media for 500+ brands, and created viral content that has 
-                  reached millions of people worldwide.
-                </p>
-              </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            {/* Left Content */}
+            <div className="animate-slide-in-left">
               <div className="relative">
-                <img
-                  src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800"
-                  alt="ZenBuzz Media team"
-                  className="w-full h-96 object-cover rounded-2xl"
+                <img 
+                  src="https://images.pexels.com/photos/3184357/pexels-photo-3184357.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                  alt="Team brainstorming session" 
+                  className="w-full h-96 object-cover rounded-2xl shadow-2xl"
                 />
-                <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-zen-rose rounded-full rotating-image flex items-center justify-center">
-                  <Zap className="w-8 h-8 text-white" />
+                <div className="absolute inset-0 bg-gradient-to-t from-dark-brown/20 to-transparent rounded-2xl"></div>
+                
+                {/* Floating Achievement Card */}
+                <div className="absolute -bottom-6 -right-6 bg-white rounded-xl p-6 shadow-xl animate-float">
+                  <div className="flex items-center space-x-3">
+                    <Award className="h-8 w-8 text-primary-400" />
+                    <div>
+                      <div className="text-xl font-bold text-dark-brown">Award Winner</div>
+                      <div className="text-sm text-dark-brown/70">Digital Excellence 2024</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Content */}
+            <div className="animate-slide-in-right">
+              <h2 className="text-4xl font-display font-bold text-dark-brown mb-6 leading-tight">
+                Our Journey Started with a 
+                <span className="text-primary-400 block">Simple Belief</span>
+              </h2>
+
+              <p className="text-lg text-dark-brown/80 mb-8 leading-relaxed">
+                Founded in 2019, ZenBuzz Media emerged from a vision to bridge the gap between creative 
+                excellence and strategic marketing. We started as a small team of passionate creatives 
+                and have grown into a full-service digital agency that serves clients across industries.
+              </p>
+
+              <div className="space-y-6 mb-8">
+                <div className="flex items-start space-x-4 group">
+                  <div className="flex-shrink-0 w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center group-hover:bg-primary-200 transition-colors duration-300">
+                    <Target className="h-6 w-6 text-primary-400" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold text-dark-brown mb-2">Strategic Approach</h3>
+                    <p className="text-dark-brown/70">Every campaign starts with understanding your unique goals and audience insights.</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-4 group">
+                  <div className="flex-shrink-0 w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center group-hover:bg-primary-200 transition-colors duration-300">
+                    <Users className="h-6 w-6 text-primary-400" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold text-dark-brown mb-2">Collaborative Partnership</h3>
+                    <p className="text-dark-brown/70">We work alongside you as an extended team, ensuring transparency and alignment.</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -121,106 +93,119 @@ const About: React.FC = () => {
         </div>
       </section>
 
-      {/* Values */}
-      <section className="py-20 bg-zen-light">
-        <div className="container mx-auto px-6">
+      {/* Values Section */}
+      <section className="py-20 bg-gradient-to-br from-light-cream to-cream">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-display font-bold text-zen-brown mb-6">
-              Our Values
+            <h2 className="text-4xl font-display font-bold text-dark-brown mb-6">
+              Our Core <span className="text-primary-400">Values</span>
             </h2>
-            <p className="text-xl text-zen-brown/70 max-w-3xl mx-auto">
+            <p className="text-lg text-dark-brown/80 max-w-3xl mx-auto">
               The principles that guide everything we do
             </p>
           </div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {values.map((value, index) => (
-              <div
-                key={index}
-                className="text-center group"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="w-16 h-16 bg-zen-gradient rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <value.icon className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-xl font-display font-semibold text-zen-brown mb-4">
-                  {value.title}
-                </h3>
-                <p className="text-zen-brown/70 leading-relaxed">
-                  {value.description}
-                </p>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                title: "Innovation First",
+                description: "We stay ahead of digital trends to keep your brand at the forefront of innovation.",
+                icon: "🚀"
+              },
+              {
+                title: "Results Driven",
+                description: "Every strategy is designed with measurable outcomes and ROI in mind.",
+                icon: "📈"
+              },
+              {
+                title: "Client Focused",
+                description: "Your success is our success. We're committed to exceeding your expectations.",
+                icon: "🎯"
+              }
+            ].map((value, index) => (
+              <div key={index} className="group bg-white/80 backdrop-blur-sm p-8 rounded-2xl hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 animate-slide-up border border-white/20" style={{ animationDelay: `${index * 0.2}s` }}>
+                <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">{value.icon}</div>
+                <h3 className="text-xl font-semibold text-dark-brown mb-3">{value.title}</h3>
+                <p className="text-dark-brown/70 leading-relaxed">{value.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Team */}
+      {/* Team Section */}
       <section className="py-20 bg-white">
-        <div className="container mx-auto px-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-display font-bold text-zen-brown mb-6">
-              Meet Our Team
+            <h2 className="text-4xl font-display font-bold text-dark-brown mb-6">
+              Meet Our <span className="text-primary-400">Creative Team</span>
             </h2>
-            <p className="text-xl text-zen-brown/70 max-w-3xl mx-auto">
-              The creative minds behind ZenBuzz Media
+            <p className="text-lg text-dark-brown/80 max-w-3xl mx-auto">
+              The talented individuals behind every successful campaign
             </p>
           </div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {team.map((member, index) => (
-              <div
-                key={index}
-                className="text-center group"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                name: "Priya Sharma",
+                role: "Creative Director",
+                image: "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=400",
+                bio: "10+ years in creative strategy and brand development"
+              },
+              {
+                name: "Arjun Patel",
+                role: "Digital Marketing Lead",
+                image: "https://images.pexels.com/photos/3184287/pexels-photo-3184287.jpeg?auto=compress&cs=tinysrgb&w=400",
+                bio: "Expert in performance marketing and analytics"
+              },
+              {
+                name: "Sneha Reddy",
+                role: "UX/UI Designer",
+                image: "https://images.pexels.com/photos/3184317/pexels-photo-3184317.jpeg?auto=compress&cs=tinysrgb&w=400",
+                bio: "Passionate about creating user-centered designs"
+              }
+            ].map((member, index) => (
+              <div key={index} className="group text-center">
                 <div className="relative mb-6">
-                  <img
-                    src={member.image}
+                  <img 
+                    src={member.image} 
                     alt={member.name}
-                    className="w-48 h-48 object-cover rounded-2xl mx-auto group-hover:scale-105 transition-transform duration-300"
+                    className="w-48 h-48 object-cover rounded-full mx-auto shadow-lg group-hover:shadow-xl transition-shadow duration-300"
                   />
-                  <div className="absolute inset-0 bg-zen-gradient/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute inset-0 bg-primary-400/20 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
-                <h3 className="text-xl font-display font-semibold text-zen-brown mb-2">
-                  {member.name}
-                </h3>
-                <p className="text-zen-rose font-medium mb-4">
-                  {member.role}
-                </p>
-                <p className="text-zen-brown/70 text-sm leading-relaxed">
-                  {member.bio}
-                </p>
+                <h3 className="text-xl font-semibold text-dark-brown mb-2">{member.name}</h3>
+                <p className="text-primary-400 font-medium mb-3">{member.role}</p>
+                <p className="text-dark-brown/70 text-sm">{member.bio}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Stats */}
-      <section className="py-20 bg-zen-brown text-white">
-        <div className="container mx-auto px-6">
+      {/* Stats Section */}
+      <section className="py-20 bg-gradient-to-br from-primary-400 to-primary-500">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-display font-bold mb-6">
-              Our Impact
+            <h2 className="text-4xl font-display font-bold text-white mb-6">
+              Our Impact in Numbers
             </h2>
-            <p className="text-xl text-zen-cream/80 max-w-3xl mx-auto">
-              Numbers that reflect our commitment to excellence
-            </p>
           </div>
-          
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
-              <div
-                key={index}
-                className="text-center group"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="w-16 h-16 bg-zen-gradient rounded-full flex items-center justify-center mx-auto mb-4 group-hover:rotate-12 transition-transform duration-300">
-                  <stat.icon className="w-8 h-8 text-white" />
+
+          <div className="grid md:grid-cols-4 gap-8 text-center">
+            {[
+              { number: "250+", label: "Projects Completed", icon: TrendingUp },
+              { number: "150+", label: "Happy Clients", icon: Users },
+              { number: "5+", label: "Years Experience", icon: Zap },
+              { number: "98%", label: "Client Satisfaction", icon: Award }
+            ].map((stat, index) => (
+              <div key={index} className="group">
+                <div className="flex justify-center mb-4">
+                  <stat.icon className="h-12 w-12 text-white/80 group-hover:text-white group-hover:scale-110 transition-all duration-300" />
                 </div>
-                <div className="text-3xl font-bold text-white mb-2">{stat.value}</div>
-                <div className="text-zen-cream/80">{stat.label}</div>
+                <div className="text-4xl font-bold text-white mb-2">{stat.number}</div>
+                <div className="text-white/80">{stat.label}</div>
               </div>
             ))}
           </div>
