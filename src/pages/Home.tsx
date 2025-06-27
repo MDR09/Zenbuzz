@@ -1,8 +1,75 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { ArrowRight, Play, TrendingUp, Users, Zap, Brush, BarChart3, Megaphone, ExternalLink, Headphones, Instagram } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
+// Animated Counter Component
+const AnimatedCounter: React.FC<{ 
+  end: number; 
+  duration?: number; 
+  suffix?: string; 
+  isVisible: boolean;
+}> = ({ end, duration = 2000, suffix = '', isVisible }) => {
+  const [count, setCount] = useState(0);
+  const [hasAnimated, setHasAnimated] = useState(false);
+
+  useEffect(() => {
+    if (isVisible && !hasAnimated) {
+      setHasAnimated(true);
+      let startTime: number;
+      const startValue = 0;
+      
+      const animate = (currentTime: number) => {
+        if (!startTime) startTime = currentTime;
+        const progress = Math.min((currentTime - startTime) / duration, 1);
+        
+        // Easing function for smooth animation
+        const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+        const currentCount = Math.floor(easeOutQuart * (end - startValue) + startValue);
+        
+        setCount(currentCount);
+        
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        } else {
+          setCount(end);
+        }
+      };
+      
+      requestAnimationFrame(animate);
+    }
+  }, [isVisible, hasAnimated, end, duration]);
+
+  return (
+    <span className="text-2xl font-bold text-dark-brown">
+      {count}{suffix}
+    </span>
+  );
+};
+
 const Home = () => {
+  const [statsVisible, setStatsVisible] = useState(false);
+  const statsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setStatsVisible(true);
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    if (statsRef.current) {
+      observer.observe(statsRef.current);
+    }
+
+    return () => {
+      if (statsRef.current) {
+        observer.unobserve(statsRef.current);
+      }
+    };
+  }, []);
   return (
     <div>
       {/* Hero Section */}
@@ -14,7 +81,7 @@ const Home = () => {
           <div className="absolute bottom-32 left-20 w-40 h-40 bg-primary-300/10 rounded-full animate-float blur-2xl" style={{ animationDelay: '2s' }}></div>
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
+        <div className="relative z-10 w-[90%] mx-auto px-4 sm:px-6 lg:px-8 pt-20">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Content */}
             <div className="text-center lg:text-left animate-slide-in-left">
@@ -52,11 +119,11 @@ const Home = () => {
               </div>
 
               {/* Stats */}
-              <div className="grid grid-cols-3 gap-6 text-center lg:text-left">
+              <div ref={statsRef} className="grid grid-cols-3 gap-6 text-center lg:text-left">
                 <div className="group">
                   <div className="flex items-center justify-center lg:justify-start mb-2">
                     <TrendingUp className="h-6 w-6 text-primary-400 mr-2 group-hover:scale-110 transition-transform duration-300" />
-                    <span className="text-2xl font-bold text-dark-brown">250+</span>
+                    <AnimatedCounter end={250} suffix="+" isVisible={statsVisible} />
                   </div>
                   <p className="text-sm text-dark-brown/70">Projects Completed</p>
                 </div>
@@ -64,7 +131,7 @@ const Home = () => {
                 <div className="group">
                   <div className="flex items-center justify-center lg:justify-start mb-2">
                     <Users className="h-6 w-6 text-primary-400 mr-2 group-hover:scale-110 transition-transform duration-300" />
-                    <span className="text-2xl font-bold text-dark-brown">150+</span>
+                    <AnimatedCounter end={150} suffix="+" isVisible={statsVisible} />
                   </div>
                   <p className="text-sm text-dark-brown/70">Happy Clients</p>
                 </div>
@@ -72,7 +139,7 @@ const Home = () => {
                 <div className="group">
                   <div className="flex items-center justify-center lg:justify-start mb-2">
                     <Zap className="h-6 w-6 text-primary-400 mr-2 group-hover:scale-110 transition-transform duration-300" />
-                    <span className="text-2xl font-bold text-dark-brown">5+</span>
+                    <AnimatedCounter end={5} suffix="+" isVisible={statsVisible} />
                   </div>
                   <p className="text-sm text-dark-brown/70">Years Experience</p>
                 </div>
@@ -83,7 +150,7 @@ const Home = () => {
             <div className="relative animate-slide-in-right">
               <div className="relative bg-white/40 backdrop-blur-sm rounded-3xl p-8 shadow-2xl">
                 <img 
-                  src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800"  
                   alt="Creative team collaboration" 
                   className="w-full h-96 object-cover rounded-2xl shadow-lg"
                 />
@@ -120,7 +187,7 @@ const Home = () => {
 
       {/* Services Preview */}
       <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-[90%] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 animate-slide-up">
             <h2 className="text-4xl md:text-5xl font-display font-bold text-dark-brown mb-6">
               Our Core <span className="text-primary-400">Services</span>
@@ -176,7 +243,7 @@ const Home = () => {
 
       {/* Featured Work Preview */}
       <section className="py-20 bg-gradient-to-br from-light-cream to-cream">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-[90%] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-display font-bold text-dark-brown mb-6">
               Featured <span className="text-primary-400">Work</span>
@@ -241,7 +308,7 @@ const Home = () => {
 
       {/* Blog & Podcast Preview */}
       <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-[90%] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16">
             {/* Blog Preview */}
             <div>
@@ -255,19 +322,27 @@ const Home = () => {
               <div className="space-y-6">
                 {[
                   {
-                    title: "5 Digital Marketing Trends for 2024",
-                    excerpt: "Discover the latest trends shaping the digital marketing landscape...",
-                    date: "Dec 15, 2024",
-                    image: "https://images.pexels.com/photos/3184317/pexels-photo-3184317.jpeg?auto=compress&cs=tinysrgb&w=400"
+                    title: "The Power of Authentic Storytelling in 2025",
+                    excerpt: "Why brands that tell genuine stories connect deeper with their audience and drive better engagement...",
+                    date: "2 days ago",
+                    image: "https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=400",
+                    link: "https://www.instagram.com/zenbuzzmedia/"
                   },
                   {
-                    title: "Building Brand Identity in Digital Age",
-                    excerpt: "How to create a memorable brand that resonates with your audience...",
-                    date: "Dec 10, 2024",
-                    image: "https://images.pexels.com/photos/3184350/pexels-photo-3184350.jpeg?auto=compress&cs=tinysrgb&w=400"
+                    title: "Creative Design Trends That Actually Convert",
+                    excerpt: "From minimalist aesthetics to bold color choices, discover what's driving conversions in modern design...",
+                    date: "5 days ago",
+                    image: "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=400",
+                    link: "https://www.instagram.com/zenbuzzmedia/"
                   }
                 ].map((post, index) => (
-                  <div key={index} className="flex space-x-4 group cursor-pointer">
+                  <a 
+                    key={index}
+                    href={post.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex space-x-4 group cursor-pointer"
+                  >
                     <img 
                       src={post.image} 
                       alt={post.title}
@@ -280,18 +355,20 @@ const Home = () => {
                       <p className="text-sm text-dark-brown/70 mt-1">{post.excerpt}</p>
                       <span className="text-xs text-primary-400 mt-2 block">{post.date}</span>
                     </div>
-                  </div>
+                  </a>
                 ))}
               </div>
 
               <div className="mt-8">
-                <Link 
-                  to="/blog"
+                <a 
+                  href="https://www.instagram.com/zenbuzzmedia/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-primary-400 hover:text-primary-500 font-medium inline-flex items-center space-x-2"
                 >
-                  <span>View All Posts</span>
+                  <span>Follow on Instagram</span>
                   <ArrowRight className="h-4 w-4" />
-                </Link>
+                </a>
               </div>
             </div>
 
@@ -311,22 +388,26 @@ const Home = () => {
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold text-dark-brown">Latest Episode</h3>
-                    <p className="text-dark-brown/70">The Future of Digital Marketing</p>
+                    <p className="text-dark-brown/70">SAFAR II THE UNFOLDING STARTUP STORY II Episode 02</p>
                   </div>
                 </div>
 
                 <p className="text-dark-brown/80 mb-6">
-                  Join us as we explore emerging trends, share industry insights, and interview 
-                  leading experts in digital marketing and creative design.
+                   We dive deep into the real journeys of entrepreneurs, dreamers, and changemakers who dared to start from scratch. Join us as we explore the hustle, challenges, and raw stories behind the scenes that no one talks about.
                 </p>
 
                 <div className="flex space-x-4">
-                  <button className="bg-primary-400 text-white px-6 py-3 rounded-full font-medium hover:bg-primary-500 transition-colors duration-300 flex items-center space-x-2">
+                  <a 
+                    href="https://www.youtube.com/watch?v=cK1vLwG9H6w"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-primary-400 text-white px-6 py-3 rounded-full font-medium hover:bg-primary-500 transition-colors duration-300 flex items-center space-x-2"
+                  >
                     <Play className="h-4 w-4" />
-                    <span>Play Now</span>
-                  </button>
+                    <span>Watch Now</span>
+                  </a>
                   <Link 
-                    to="/podcast"
+                    to="/content"
                     className="border-2 border-primary-200 text-dark-brown px-6 py-3 rounded-full font-medium hover:border-primary-400 hover:bg-primary-50 transition-all duration-300"
                   >
                     All Episodes
@@ -340,7 +421,7 @@ const Home = () => {
 
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-br from-primary-400 to-primary-500">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="w-[90%] mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-6">
             Ready to Create Something Amazing?
           </h2>

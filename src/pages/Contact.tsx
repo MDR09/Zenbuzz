@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send, Clock, Globe, MessageCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Clock, MessageCircle, Youtube, Linkedin, Instagram } from 'lucide-react';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -27,7 +27,7 @@ const Contact = () => {
     <div className="pt-20">
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-cream via-light-cream to-tan">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-[90%] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 animate-slide-up">
             <div className="inline-flex items-center space-x-2 bg-white/60 backdrop-blur-sm rounded-full px-4 py-2 mb-6 shadow-lg">
               <MessageCircle className="h-4 w-4 text-primary-400" />
@@ -49,7 +49,7 @@ const Contact = () => {
 
       {/* Contact Section */}
       <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-[90%] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-start">
             {/* Contact Information */}
             <div className="animate-slide-in-left">
@@ -65,8 +65,8 @@ const Contact = () => {
                     </div>
                     <div>
                       <h4 className="font-semibold text-dark-brown mb-1">Phone</h4>
-                      <p className="text-dark-brown/70">+91 98765 43210</p>
-                      <p className="text-dark-brown/70">+91 87654 32109</p>
+                      <p className="text-dark-brown/70">+91 89208 98158</p>
+                      <p className="text-dark-brown/70">+91 83849 35940</p>
                     </div>
                   </div>
 
@@ -76,8 +76,8 @@ const Contact = () => {
                     </div>
                     <div>
                       <h4 className="font-semibold text-dark-brown mb-1">Email</h4>
-                      <p className="text-dark-brown/70">hello@zenbuzzmedia.in</p>
-                      <p className="text-dark-brown/70">projects@zenbuzzmedia.in</p>
+                      <p className="text-dark-brown/70">Info@zenbuzzmedia.in</p>
+                      {/* <p className="text-dark-brown/70">projects@zenbuzzmedia.in</p>   */}
                     </div>
                   </div>
 
@@ -87,7 +87,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <h4 className="font-semibold text-dark-brown mb-1">Office</h4>
-                      <p className="text-dark-brown/70">123 Digital Avenue,<br />Mumbai, Maharashtra 400001</p>
+                      <p className="text-dark-brown/70">Bhamashah Techno Hub,<br />Jaipur, Rajasthan 302017</p>
                     </div>
                   </div>
 
@@ -97,8 +97,8 @@ const Contact = () => {
                     </div>
                     <div>
                       <h4 className="font-semibold text-dark-brown mb-1">Working Hours</h4>
-                      <p className="text-dark-brown/70">Mon - Fri: 9:00 AM - 6:00 PM</p>
-                      <p className="text-dark-brown/70">Sat: 10:00 AM - 4:00 PM</p>
+                      <p className="text-dark-brown/70">Mon - Fri: 10:00 AM - 6:00 PM</p>
+                      {/* <p className="text-dark-brown/70">Sat: 10:00 AM - 4:00 PM</p> */}
                     </div>
                   </div>
                 </div>
@@ -108,14 +108,33 @@ const Contact = () => {
               <div className="bg-gradient-to-br from-primary-50 to-light-cream rounded-3xl p-8 shadow-xl border border-white/20">
                 <h3 className="text-xl font-semibold text-dark-brown mb-6">Follow Our Journey</h3>
                 <div className="flex space-x-4">
-                  {['LinkedIn', 'Twitter', 'Instagram', 'Facebook'].map((social) => (
-                    <button
-                      key={social}
-                      className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center hover:bg-primary-400 hover:text-white transition-all duration-300 transform hover:scale-110 shadow-lg"
-                    >
-                      <Globe className="h-5 w-5" />
-                    </button>
-                  ))}
+                  <a
+                    href="https://youtube.com/@safar_1-j9c?si=SvgE5VaCQfSQPgCY"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center hover:bg-red-500 hover:text-white transition-all duration-300 transform hover:scale-110 shadow-lg group"
+                    title="YouTube"
+                  >
+                    <Youtube className="h-5 w-5 group-hover:text-white" />
+                  </a>
+                  <a
+                    href="http://www.linkedin.com/in/ruchika-gupta-95344114a"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all duration-300 transform hover:scale-110 shadow-lg group"
+                    title="LinkedIn"
+                  >
+                    <Linkedin className="h-5 w-5 group-hover:text-white" />
+                  </a>
+                  <a
+                    href="https://www.instagram.com/zenbuzzmedia/profilecard/?igsh=MTlhZzZ0andrZDFkMA%3D%3D"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-500 hover:text-white transition-all duration-300 transform hover:scale-110 shadow-lg group"
+                    title="Instagram"
+                  >
+                    <Instagram className="h-5 w-5 group-hover:text-white" />
+                  </a>
                 </div>
               </div>
             </div>
@@ -232,7 +251,7 @@ const Contact = () => {
 
       {/* FAQ Section */}
       <section className="py-20 bg-gradient-to-br from-light-cream to-cream">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-[90%] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-display font-bold text-dark-brown mb-6">
               Frequently Asked <span className="text-primary-400">Questions</span>
