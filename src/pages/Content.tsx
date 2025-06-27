@@ -44,7 +44,7 @@ const Content: React.FC = () => {
     },
     {
       id: 3,
-      title: 'Life Lessons: Wisdom from Experience',
+      title: 'Safar II The Unfolding Start up Story II',
       thumbnail: 'p1.webp',
       guest: 'Life Mentors',
       duration: '48:22',

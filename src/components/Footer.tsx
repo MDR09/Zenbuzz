@@ -1,5 +1,6 @@
 import React from 'react';
 import { Zap, Mail, Phone, MapPin, Heart } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -23,15 +24,26 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center space-x-3 text-dark-brown/70">
                 <Mail className="h-5 w-5 text-primary-400" />
-                <span>Info@zenbuzzmedia.in</span>
+                <a href="mailto:Info@zenbuzzmedia.in" className="hover:text-primary-400 transition-colors duration-300">
+                  Info@zenbuzzmedia.in
+                </a>
               </div>
               <div className="flex items-center space-x-3 text-dark-brown/70">
                 <Phone className="h-5 w-5 text-primary-400" />
-                <span>+91 8920898158</span>
+                <a href="tel:+918920898158" className="hover:text-primary-400 transition-colors duration-300">
+                  +91 8920898158
+                </a>
               </div>
               <div className="flex items-center space-x-3 text-dark-brown/70">
                 <MapPin className="h-5 w-5 text-primary-400" />
-                <span>Bhamashah Techno Hub,302017</span>
+                <a 
+                  href="https://maps.google.com/?q=Bhamashah+Techno+Hub+302017" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="hover:text-primary-400 transition-colors duration-300"
+                >
+                  Bhamashah Techno Hub,302017
+                </a>
               </div>
             </div>
           </div>
@@ -41,20 +53,29 @@ const Footer = () => {
             <h3 className="text-lg font-semibold text-dark-brown mb-6">Quick Links</h3>
             <ul className="space-y-3">
               {[
-                { label: 'About Us', href: '#about' },
-                { label: 'Services', href: '#services' },
-                { label: 'Portfolio', href: '#portfolio' },
-                { label: 'Contact', href: '#contact' },
-                { label: 'Blog', href: '#' },
-                { label: 'Careers', href: '#' }
+                { label: 'About Us', href: '/about' },
+                { label: 'Services', href: '/services' },
+                { label: 'Portfolio', href: '/portfolio' },
+                { label: 'Contact', href: '/contact' },
+                { label: 'Content', href: '/content' },
+                { label: 'Careers', href: 'mailto:Info@zenbuzzmedia.in?subject=Career Opportunity' }
               ].map((link) => (
                 <li key={link.label}>
-                  <a
-                    href={link.href}
-                    className="text-dark-brown/70 hover:text-primary-400 transition-colors duration-300 hover:underline"
-                  >
-                    {link.label}
-                  </a>
+                  {link.href.startsWith('mailto:') ? (
+                    <a
+                      href={link.href}
+                      className="text-dark-brown/70 hover:text-primary-400 transition-colors duration-300 hover:underline"
+                    >
+                      {link.label}
+                    </a>
+                  ) : (
+                    <Link
+                      to={link.href}
+                      className="text-dark-brown/70 hover:text-primary-400 transition-colors duration-300 hover:underline"
+                    >
+                      {link.label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
@@ -65,17 +86,20 @@ const Footer = () => {
             <h3 className="text-lg font-semibold text-dark-brown mb-6">Services</h3>
             <ul className="space-y-3">
               {[
-                'Creative Design',
-                'Digital Marketing',
-                'Web Development',
-                'Analytics & Strategy',
-                'Mobile Marketing',
-                'Performance Marketing'
+                { name: 'Creative Design', href: '/services#creative-design' },
+                { name: 'Digital Marketing', href: '/services#digital-marketing' },
+                { name: 'Web Development', href: '/services#web-development' },
+                { name: 'Analytics & Strategy', href: '/services#analytics-strategy' },
+                { name: 'Mobile Marketing', href: '/services#mobile-marketing' },
+                { name: 'Performance Marketing', href: '/services#performance-marketing' }
               ].map((service) => (
-                <li key={service}>
-                  <span className="text-dark-brown/70 hover:text-primary-400 transition-colors duration-300 cursor-pointer">
-                    {service}
-                  </span>
+                <li key={service.name}>
+                  <Link 
+                    to={service.href}
+                    className="text-dark-brown/70 hover:text-primary-400 transition-colors duration-300 cursor-pointer"
+                  >
+                    {service.name}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -114,10 +138,24 @@ const Footer = () => {
               <span>in India</span>
             </div>
             <div className="flex space-x-6">
-              <a href="#" className="text-dark-brown/70 hover:text-primary-400 transition-colors duration-300 text-sm">
+              <a 
+                href="/privacy-policy" 
+                className="text-dark-brown/70 hover:text-primary-400 transition-colors duration-300 text-sm"
+                onClick={(e) => {
+                  e.preventDefault();
+                  alert('Privacy Policy page is under construction. Please contact us for more information.');
+                }}
+              >
                 Privacy Policy
               </a>
-              <a href="#" className="text-dark-brown/70 hover:text-primary-400 transition-colors duration-300 text-sm">
+              <a 
+                href="/terms-of-service" 
+                className="text-dark-brown/70 hover:text-primary-400 transition-colors duration-300 text-sm"
+                onClick={(e) => {
+                  e.preventDefault();
+                  alert('Terms of Service page is under construction. Please contact us for more information.');
+                }}
+              >
                 Terms of Service
               </a>
             </div>
