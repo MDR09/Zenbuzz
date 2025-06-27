@@ -26,7 +26,7 @@ const Content: React.FC = () => {
       category: 'Inspiration',
       season: 'Season 1',
       episode: 'Episode 3',
-      youtubeUrl: 'https://www.youtube.com/@SAFAR_1-j9c'
+      youtubeUrl: 'https://www.youtube.com/watch?v=kV62xGVRKoU'
     },
     {
       id: 2,
@@ -40,12 +40,12 @@ const Content: React.FC = () => {
       category: 'Travel',
       season: 'Season 1',
       episode: 'Episode 2',
-      youtubeUrl: 'https://www.youtube.com/@SAFAR_1-j9c'
+      youtubeUrl: 'https://www.youtube.com/watch?v=cK1vLwG9H6w&t=1s'
     },
     {
       id: 3,
       title: 'Life Lessons: Wisdom from Experience',
-      thumbnail: 'https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=800',
+      thumbnail: 'p1.webp',
       guest: 'Life Mentors',
       duration: '48:22',
       views: '21.5K',
