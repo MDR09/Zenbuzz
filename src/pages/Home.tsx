@@ -322,17 +322,17 @@ const Home = () => {
               <div className="space-y-6">
                 {[
                   {
-                    title: "The Power of Authentic Storytelling in 2025",
-                    excerpt: "Why brands that tell genuine stories connect deeper with their audience and drive better engagement...",
-                    date: "2 days ago",
-                    image: "https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=400",
-                    link: "https://www.instagram.com/zenbuzzmedia/"
+                    title: "Transform your vision into reality with Zenbuzz Media – creative minds. proven results.",
+                    excerpt: "",
+                    date: "8 weeks ago",
+                    image: "I1.png",
+                    link: "https://www.instagram.com/p/DJJGz3ySs06/"
                   },
                   {
-                    title: "Creative Design Trends That Actually Convert",
+                    title: "Want to Know what we do ?🤔Come here and just visit our page🙄",
                     excerpt: "From minimalist aesthetics to bold color choices, discover what's driving conversions in modern design...",
-                    date: "5 days ago",
-                    image: "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=400",
+                    date: "7 weeks ago",
+                    image: "I2.png",
                     link: "https://www.instagram.com/zenbuzzmedia/"
                   }
                 ].map((post, index) => (
