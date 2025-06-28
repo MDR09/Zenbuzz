@@ -216,13 +216,13 @@ const About = () => {
             {[
               {
                 name: "Summit",
-                role: "Founder & CEO",
+                role: "CEO",
                 image: "Founder.jpg",
                 bio: "10+ years in creative strategy and brand development. Passionate about building brands that make a difference."
               },
               {
                 name: "Ruchika Gupta",
-                role: "Co-Founder",
+                role: "Director",
                 image: "co-founder.jpg",
                 bio: "Expert in performance marketing and analytics. Data-driven strategist with a creative mindset."
               }

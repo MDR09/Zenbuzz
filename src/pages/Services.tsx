@@ -9,7 +9,7 @@ const Services = () => {
       title: "Creative Design",
       description: "Stunning visual identities and designs that capture your brand essence and engage your audience.",
       features: ["Brand Identity Design", "Logo & Visual Assets", "UI/UX Design", "Print Design", "Packaging Design", "Social Media Graphics"],
-      price: "Starting from ₹25,000"
+      price: "Starting from ₹10,000"
     },
     {
       icon: Megaphone,
@@ -30,7 +30,7 @@ const Services = () => {
       title: "Web Development",
       description: "Modern, responsive websites that deliver exceptional user experiences and drive results.",
       features: ["Custom Websites", "E-commerce Solutions", "Mobile Apps", "CMS Development", "Website Maintenance", "Performance Optimization"],
-      price: "Starting from ₹50,000"
+      price: "Starting from ₹15,000"
     },
     {
       icon: Smartphone,
