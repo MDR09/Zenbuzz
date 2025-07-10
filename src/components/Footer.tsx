@@ -1,9 +1,15 @@
 import React from 'react';
 import { Zap, Mail, Phone, MapPin, Heart } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const navigate = useNavigate();
+
+  const handleNavigation = (href: string) => {
+    navigate(href);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
     <footer className="bg-gradient-to-br from-light-cream to-cream text-dark-brown">
@@ -30,8 +36,8 @@ const Footer = () => {
               </div>
               <div className="flex items-center space-x-3 text-dark-brown/70">
                 <Phone className="h-5 w-5 text-primary-400" />
-                <a href="tel:+917850859204" className="hover:text-primary-400 transition-colors duration-300">
-                  +91 7850859204
+                <a href="tel:+918920898158" className="hover:text-primary-400 transition-colors duration-300">
+                  +91 8920898158
                 </a>
               </div>
               <div className="flex items-center space-x-3 text-dark-brown/70">
@@ -69,12 +75,12 @@ const Footer = () => {
                       {link.label}
                     </a>
                   ) : (
-                    <Link
-                      to={link.href}
-                      className="text-dark-brown/70 hover:text-primary-400 transition-colors duration-300 hover:underline"
+                    <button
+                      onClick={() => handleNavigation(link.href)}
+                      className="text-dark-brown/70 hover:text-primary-400 transition-colors duration-300 hover:underline text-left"
                     >
                       {link.label}
-                    </Link>
+                    </button>
                   )}
                 </li>
               ))}
@@ -94,12 +100,12 @@ const Footer = () => {
                 { name: 'Performance Marketing', href: '/services#performance-marketing' }
               ].map((service) => (
                 <li key={service.name}>
-                  <Link 
-                    to={service.href}
-                    className="text-dark-brown/70 hover:text-primary-400 transition-colors duration-300 cursor-pointer"
+                  <button 
+                    onClick={() => handleNavigation(service.href)}
+                    className="text-dark-brown/70 hover:text-primary-400 transition-colors duration-300 cursor-pointer text-left"
                   >
                     {service.name}
-                  </Link>
+                  </button>
                 </li>
               ))}
             </ul>

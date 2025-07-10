@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send, Clock, MessageCircle, Youtube, Linkedin, Instagram } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Clock, MessageCircle, Youtube, Linkedin, Instagram, CheckCircle, AlertCircle } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -10,10 +11,85 @@ const Contact = () => {
     message: ''
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [statusMessage, setStatusMessage] = useState('');
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log('Form submitted:', formData);
+    setIsLoading(true);
+    setSubmitStatus('idle');
+
+    try {
+      // EmailJS configuration from environment variables
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+      // Check if environment variables are set
+      if (!serviceId || !templateId || !publicKey) {
+        // Demo mode - simulate email sending
+        console.log('Demo Mode: Email would be sent with the following data:');
+        console.log({
+          to: 'Info@zenbuzzmedia.in',
+          from: formData.email,
+          name: formData.name,
+          phone: formData.phone,
+          service: formData.service,
+          message: formData.message
+        });
+        
+        // Simulate API delay
+        await new Promise(resolve => setTimeout(resolve, 2000));
+        
+        setSubmitStatus('success');
+        setStatusMessage('Demo Mode: Your message would be sent to Info@zenbuzzmedia.in. Please check the console for details. To enable real email sending, configure EmailJS (see EMAILJS_SETUP.md).');
+        
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          service: '',
+          message: ''
+        });
+        
+        return;
+      }
+
+      // Prepare the email parameters
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        phone: formData.phone,
+        service: formData.service,
+        message: formData.message,
+        to_email: import.meta.env.VITE_TO_EMAIL || 'Info@zenbuzzmedia.in',
+      };
+
+      // Send email using EmailJS
+      await emailjs.send(serviceId, templateId, templateParams, publicKey);
+
+      // Success
+      setSubmitStatus('success');
+      setStatusMessage('Thank you! Your message has been sent successfully. We\'ll get back to you soon.');
+      
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        service: '',
+        message: ''
+      });
+
+    } catch (error) {
+      console.error('Email send failed:', error);
+      setSubmitStatus('error');
+      setStatusMessage('Sorry, there was an error sending your message. Please try again or contact us directly.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -237,11 +313,41 @@ const Contact = () => {
 
                   <button
                     type="submit"
-                    className="w-full bg-primary-400 text-white py-4 px-8 rounded-lg font-semibold hover:bg-primary-500 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2"
+                    disabled={isLoading}
+                    className={`w-full py-4 px-8 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2 ${
+                      isLoading 
+                        ? 'bg-gray-400 cursor-not-allowed' 
+                        : 'bg-primary-400 hover:bg-primary-500 text-white'
+                    }`}
                   >
-                    <span>Send Message</span>
-                    <Send className="h-5 w-5" />
+                    {isLoading ? (
+                      <>
+                        <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+                        <span>Sending...</span>
+                      </>
+                    ) : (
+                      <>
+                        <span>Send Message</span>
+                        <Send className="h-5 w-5" />
+                      </>
+                    )}
                   </button>
+
+                  {/* Status Message */}
+                  {submitStatus !== 'idle' && (
+                    <div className={`mt-4 p-4 rounded-lg flex items-center space-x-3 ${
+                      submitStatus === 'success' 
+                        ? 'bg-green-50 border border-green-200 text-green-800' 
+                        : 'bg-red-50 border border-red-200 text-red-800'
+                    }`}>
+                      {submitStatus === 'success' ? (
+                        <CheckCircle className="h-5 w-5 text-green-600" />
+                      ) : (
+                        <AlertCircle className="h-5 w-5 text-red-600" />
+                      )}
+                      <p className="text-sm">{statusMessage}</p>
+                    </div>
+                  )}
                 </form>
               </div>
             </div>
