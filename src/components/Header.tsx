@@ -48,7 +48,7 @@ const Header = () => {
               <img 
                 src="/ZENBUZZ logo.png" 
                 alt="ZenBuzz Media Logo" 
-                className="h-10 w-auto group-hover:scale-105 transition-transform duration-300"
+                className="h-12 w-auto group-hover:scale-105 transition-transform duration-300"
               />
               <div className="absolute inset-0 bg-primary-400/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </div>
