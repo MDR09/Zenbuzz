@@ -215,7 +215,7 @@ const About = () => {
           <div className="grid md:grid-cols-2 gap-8 justify-center max-w-4xl mx-auto">
             {[
               {
-                name: "Sumit Dutt",
+                name: "Sumit Dutt ",
                 role: "CEO",
                 image: "Founder.jpg",
                 bio: "10+ years in creative strategy and brand development. Passionate about building brands that make a difference."
