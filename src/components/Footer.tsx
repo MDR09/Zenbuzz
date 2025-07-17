@@ -63,7 +63,7 @@ const Footer = () => {
                 { label: 'Services', href: '/services' },
                 { label: 'Portfolio', href: '/portfolio' },
                 { label: 'Contact', href: '/contact' },
-                { label: 'Content', href: '/content' },
+                { label: 'Podcast', href: '/content' },
                 { label: 'Careers', href: 'mailto:Info@zenbuzzmedia.in?subject=Career Opportunity' }
               ].map((link) => (
                 <li key={link.label}>

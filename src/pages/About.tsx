@@ -224,7 +224,7 @@ const About = () => {
                 name: "Ruchika Gupta",
                 role: "Director",
                 image: "co-founder.jpg",
-                bio: "Expert in performance marketing and analytics. Data-driven strategist with a creative mindset."
+                bio: "Ruchika Gupta is an HR professional with 5+ years of industry experience. She specializes in providing training and internship opportunities to students and conducts live seminars to share real-world insights. Her dedication to bridging the gap between academics and industry empowers young talent to build strong, practical career foundations."
               }
             ].map((member, index) => (
               <div key={index} className="group text-center bg-gradient-to-br from-primary-50 to-light-cream p-8 rounded-2xl hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-white/20">
